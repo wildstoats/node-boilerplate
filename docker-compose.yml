@@ -1,0 +1,14 @@
+version: '3'
+services:
+  backend:
+    user: node
+    working_dir: /home/node/app
+    env_file:
+      - ./backend/.env
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    ports: ["8080:8080"]
+    volumes:
+      - ./backend:/home/node/app
+    command: "npm start"

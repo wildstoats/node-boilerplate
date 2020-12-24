@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e -o pipefail
+cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1
+
+
+function start { # [...frontend|backend]: builds & starts containers (detached)
+  docker-compose up -d --build "$@" && logs "$@"
+}
+
+function logs { # [...frontend|backend]: tails logs of containers
+  docker-compose logs -f --tail 100 "$@"
+}
+
+function stop { # [...frontend|backend]: stops containers
+  docker-compose stop "$@"
+}
+
+function remove { # [...frontend|backend]: removes containers
+  docker-compose rm -f -s -v "$@"
+}
+
+if [[ $# -eq 0 || "$1" == "help" ]]; then
+  sed -En 's/^function (.*) \{( #)?/\1/p' "$0"
+else
+  "$@"
+fi

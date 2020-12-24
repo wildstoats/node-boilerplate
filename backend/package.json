@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Node Boilerplate Backend",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wildstoats/node-boilerplate.git"
+  },
+  "author": "wildstoats",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/wildstoats/node-boilerplate/issues"
+  },
+  "homepage": "https://github.com/wildstoats/node-boilerplate#readme",
+  "dependencies": {
+    "koa": "^2.13.0"
+  }
+}
