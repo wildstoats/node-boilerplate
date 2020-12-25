@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Node Boilerplate Backend",
   "scripts": {
-    "start": "node server.mjs",
+    "start": "nodemon --inspect=0.0.0.0 server.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/wildstoats/node-boilerplate#readme",
   "dependencies": {
-    "koa": "^2.13.0"
+    "koa": "^2.13.0",
+    "nodemon": "^2.0.6"
   }
 }
