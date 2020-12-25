@@ -14,4 +14,4 @@ services:
     ]
     volumes:
       - ./backend:/home/node/app
-    command: "npm start"
+    command: "npm run dev"

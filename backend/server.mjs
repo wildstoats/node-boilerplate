@@ -1,11 +1,17 @@
 import Koa from 'koa';
-const app = new Koa();
+import Router from '@koa/router';
 
 const PORT = process.env.PORT;
 
-app.use(async (ctx, next) => {
+const app = new Koa();
+const router = new Router();
+
+router.get('/', async (ctx, next) => {
   ctx.body = 'Hello World';
   await next();
 });
 
-app.listen(PORT);
+app
+  .use(router.routes())
+  .use(router.allowedMethods())
+  .listen(PORT);
