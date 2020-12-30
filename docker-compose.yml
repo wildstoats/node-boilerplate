@@ -1,17 +1,21 @@
 version: '3'
 services:
   backend:
+    command: "npm run dev"
     user: node
     working_dir: /home/node/app
-    env_file:
-      - ./backend/.env
+    environment:
+      - NODE_ENV=development
+      - PORT=8080
     build:
       context: backend
       dockerfile: Dockerfile
+      args:
+        - NODE_ENV=development
     ports: [
       "8080:8080",
       "9229:9229",
     ]
     volumes:
-      - ./backend:/home/node/app
+      - ./backend/src:/home/node/app/src
     command: "npm run dev"

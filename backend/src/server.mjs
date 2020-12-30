@@ -7,7 +7,7 @@ const app = new Koa();
 const router = new Router();
 
 router.get('/', async (ctx, next) => {
-  ctx.body = 'Hello World';
+  ctx.body = 'Node Boilerplate Backend';
   await next();
 });
 
