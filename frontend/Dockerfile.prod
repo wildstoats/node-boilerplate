@@ -1,0 +1,16 @@
+# 
+FROM node:14 AS build
+WORKDIR /home/node/app
+ENV NODE_ENV development
+ENV PATH /home/node/app/node_modules/.bin:$PATH
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm ci
+COPY . ./
+CMD ["npm", "run", "build"]
+
+# 
+FROM nginx:stable-alpine as production
+COPY --from=build /home/node/app/build /usr/share/nginx/html/
+EXPOSE 8081
+CMD ["nginx", "-g", "daemon off;"]
